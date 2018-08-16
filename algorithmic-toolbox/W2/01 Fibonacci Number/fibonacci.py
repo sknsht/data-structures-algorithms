@@ -1,7 +1,7 @@
 # python3
 
 
-def calc_fib(n):
+def calc_fibonacci(n):
     if (n < 1):
         return n
 
@@ -15,4 +15,4 @@ def calc_fib(n):
 
 
 n = int(input())
-print(calc_fib(n))
+print(calc_fibonacci(n))
