@@ -1,29 +1,35 @@
 import java.util.*;
 
 public class FibonacciSumLastDigit {
-    private static long getFibonacciSumNaive(long n) {
-        if (n <= 1)
-            return n;
+    private static final int PISANO_PERIOD_MOD10 = 60;
 
-        long previous = 0;
-        long current  = 1;
-        long sum      = 1;
+    private static int getFibonacciLastDigit(long n) {
+        if (n < 1)
+            return (int) n;
 
-        for (long i = 0; i < n - 1; ++i) {
-            long tmp_previous = previous;
-            previous = current;
-            current = tmp_previous + current;
-            sum += current;
+        int prev = 0;
+        int curr = 1;
+        for (long i = 2; i <= n; i++) {
+            int next = (prev + curr) % 10;
+            prev = curr;
+            curr = next;
         }
-
-        return sum % 10;
+        return curr % 10;
     }
-    
+
+    private static long getFibonacciSum(long n) {
+        // Little trick:
+        // Pisano period modulo 10 is 60
+        // Sum of n Fibonacci numbers is F(n + 2) - 1
+        int lastDigit = getFibonacciLastDigit((n + 2) % PISANO_PERIOD_MOD10);
+        int sumLastDigit = (lastDigit == 0) ? 9 : (lastDigit - 1);
+        return sumLastDigit;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long n = scanner.nextLong();
-        long s = getFibonacciSumNaive(n);
+        long s = getFibonacciSum(n);
         System.out.println(s);
     }
 }
-

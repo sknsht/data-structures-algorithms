@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
 public class FibonacciLastDigit {
-    private static long getFibonacciLastDigit(int n) {
+    private static int getFibonacciLastDigit(int n) {
         if (n <= 1)
             return n;
 
-        long prev = 0;
-        long curr = 1;
+        int prev = 0;
+        int curr = 1;
         for (int i = 2; i <= n; i++) {
-            long next = (prev + curr) % 10;
+            int next = (prev + curr) % 10;
             prev = curr;
             curr = next;
         }
