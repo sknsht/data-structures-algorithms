@@ -17,7 +17,7 @@ public class FibonacciSumLastDigit {
         return curr % 10;
     }
 
-    private static long getFibonacciSum(long n) {
+    private static int getFibonacciSum(long n) {
         // Little trick:
         // Pisano period modulo 10 is 60
         // Sum of n Fibonacci numbers is F(n + 2) - 1

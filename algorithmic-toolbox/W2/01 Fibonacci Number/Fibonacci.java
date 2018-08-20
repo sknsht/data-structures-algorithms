@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Fibonacci {
-    private static long calcFibonacci(int n) {
+    private static long getFibonacci(int n) {
         if (n < 1)
             return n;
         
@@ -19,6 +19,6 @@ public class Fibonacci {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
 
-        System.out.println(calcFibonacci(n));
+        System.out.println(getFibonacci(n));
     }
 }
