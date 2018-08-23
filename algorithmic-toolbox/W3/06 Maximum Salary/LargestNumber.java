@@ -1,23 +1,32 @@
 import java.util.*;
 
 public class LargestNumber {
-    private static String largestNumber(String[] a) {
-        //write your code here
-        String result = "";
-        for (int i = 0; i < a.length; i++) {
-            result += a[i];
+    private static String largestNumber(String[] salaryParts) {
+        int numParts = salaryParts.length;
+        if (salaryParts == null || numParts == 0)
+            return "";
+
+        String[] maxSalary = new String[numParts];
+        for (int i = 0; i < numParts; ++i) {
+            maxSalary[i] = String.valueOf(salaryParts[i]);
         }
-        return result;
+
+        Arrays.sort(maxSalary, (s1, s2) -> (s2 + s1).compareTo(s1 + s2));
+
+        StringBuilder sb = new StringBuilder();
+        for (String salaryPart : maxSalary) {
+            sb.append(salaryPart);
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        String[] a = new String[n];
+        String[] salaryParts = new String[n];
         for (int i = 0; i < n; i++) {
-            a[i] = scanner.next();
+            salaryParts[i] = scanner.next();
         }
-        System.out.println(largestNumber(a));
+        System.out.println(largestNumber(salaryParts));
     }
 }
-

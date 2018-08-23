@@ -2,24 +2,33 @@ import java.util.*;
 
 public class CoveringSegments {
 
-    private static int[] optimalPoints(Segment[] segments) {
-        //write your code here
-        int[] points = new int[2 * segments.length];
-        for (int i = 0; i < segments.length; i++) {
-            points[2 * i] = segments[i].start;
-            points[2 * i + 1] = segments[i].end;
+    public static List<Integer> optimalPoints(Segment[] segments) {
+        Arrays.sort(segments, (o1, o2) -> Integer.compare(o1.end, o2.end));
+
+        int point = -1;
+        List<Integer> points = new ArrayList<>();
+        for (Segment segment : segments) {
+            if (!segment.isInSegment(point)) {
+                point = segment.end;
+                points.add(point);
+            }
         }
         return points;
     }
 
-    private static class Segment {
+    public static class Segment {
         int start, end;
 
         Segment(int start, int end) {
             this.start = start;
             this.end = end;
         }
+
+        boolean isInSegment(int point) {
+            return point >= start && point <= end;
+        }
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -30,11 +39,10 @@ public class CoveringSegments {
             end = scanner.nextInt();
             segments[i] = new Segment(start, end);
         }
-        int[] points = optimalPoints(segments);
-        System.out.println(points.length);
+        List<Integer> points = optimalPoints(segments);
+        System.out.println(points.size());
         for (int point : points) {
             System.out.print(point + " ");
         }
     }
 }
- 
