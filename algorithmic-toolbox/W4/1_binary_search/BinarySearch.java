@@ -4,24 +4,24 @@ import java.util.*;
 public class BinarySearch {
 
     static int binarySearch(int[] a, int x) {
-        int low = 0;
-        int high = a.length - 1;
-        return binarySearch(a, low, high, x);
+        int left = 0;
+        int right = a.length - 1;
+        return binarySearch(a, left, right, x);
     }
 
-    static int binarySearch(int[] a, int low, int high, int x) {
-        if (high < low) {
+    static int binarySearch(int[] a, int left, int right, int x) {
+        if (right < left) {
             return -1;
         }
 
-        int mid = low + (high - low) / 2;
+        int mid = left + (right - left) / 2;
 
         if (x == a[mid]) {
             return mid;
         } else if (x < a[mid]) {
-            return binarySearch(a, low, mid - 1, x);
+            return binarySearch(a, left, mid - 1, x);
         } else {
-            return binarySearch(a, mid + 1, high, x);
+            return binarySearch(a, mid + 1, right, x);
         }
 
     }
@@ -39,7 +39,6 @@ public class BinarySearch {
             b[i] = scanner.nextInt();
         }
         for (int i = 0; i < m; i++) {
-            //replace with the call to binarySearch when implemented
             System.out.print(binarySearch(a, b[i]) + " ");
         }
     }
