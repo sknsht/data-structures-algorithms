@@ -2,14 +2,19 @@ import java.util.*;
 
 public class Knapsack {
     static int optimalWeight(int W, int[] w) {
-        //write you code here
-        int result = 0;
-        for (int i = 0; i < w.length; i++) {
-          if (result + w[i] <= W) {
-            result += w[i];
-          }
+        int n = w.length;
+        int[][] knapsack = new int[n + 1][W + 1];
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= W; j++) {
+                knapsack[i][j] = knapsack[i - 1][j];
+                if (w[i - 1] <= j) {
+                    knapsack[i][j] = Math.max(knapsack[i - 1][j - w[i - 1]] + w[i - 1], knapsack[i][j]);
+                }
+            }
         }
-        return result;
+
+        return knapsack[n][W];
     }
 
     public static void main(String[] args) {
@@ -24,4 +29,3 @@ public class Knapsack {
         System.out.println(optimalWeight(W, w));
     }
 }
-
