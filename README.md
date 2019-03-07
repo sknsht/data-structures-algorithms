@@ -12,7 +12,7 @@ This specialization is a mix of theory and practice: you will learn algorithmic 
 
 Specialization consists of 6 courses:
 1. [Algorithmic Toolbox](algorithmic-toolbox)
-2. Data Structures
+2. [Data Structures](data-structures)
 3. Algorithms on Graphs
 4. Algorithms on Strings
 5. Advanced Algorithms and Complexity
