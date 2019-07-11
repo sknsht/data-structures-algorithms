@@ -7,8 +7,8 @@ In this course, we consider the common data structures that are used in various 
 
 ## Syllabus
 1. [Basic Data Structures](W1)
-2. [Dynamic Arrays and Amortized Analysis](W2)
+2. Dynamic Arrays and Amortized Analysis
 3. [Priority Queues and Disjoint Sets](W3)
 4. [Hash Tables](W4)
-5. [Binary Search Trees](W5)
+5. Binary Search Trees
 6. [Binary Search Trees 2](W6)
